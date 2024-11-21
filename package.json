@@ -1,0 +1,18 @@
+{
+  "name": "Genesis",
+  "version": "1.0.0",
+  "description": "A multi-purpose discord bot",
+  "main": "index.js",
+  "repository": "https://github.com/V-GPT/Genesis.git",
+  "author": "Vedant Grover <vedantvgrover@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "discord.js": "^14.16.3",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "eslint": "^9.15.0",
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "3.3.3"
+  }
+}

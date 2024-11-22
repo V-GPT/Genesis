@@ -19,6 +19,6 @@ module.exports = {
       .setTitle("Binary Converter")
       .setDescription(`The binary representation of **${integer}** is **${binary}**.`)
     
-    await interaction.reply({ embeds: [exampleEmbed] });
+    await interaction.reply({ embeds: [embed] });
   },
 };

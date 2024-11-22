@@ -5,20 +5,17 @@ module.exports = {
     .setName("ping")
     .setDescription("Test command that replies with Pong!"),
   async execute(interaction) {
-    const exampleEmbed = new EmbedBuilder()
-      .setTitle("🏓 Pong!")
-      .addFields(
-        {
-          name: "Bot Latency",
-          value: `${Date.now() - interaction.createdTimestamp}ms`,
-        },
-        {
-          name: "API Latency",
-          value: `${interaction.client.ws.ping}ms`,
-        },
-      )
-      .setFooter({ text: `Requested by ${interaction.user.username}` });
+    const exampleEmbed = new EmbedBuilder().setTitle("🏓 Pong!").addFields(
+      {
+        name: "Bot Latency",
+        value: `${Date.now() - interaction.createdTimestamp}ms`,
+      },
+      {
+        name: "API Latency",
+        value: `${interaction.client.ws.ping}ms`,
+      },
+    );
 
-    interaction.reply({ embeds: [exampleEmbed] });
+    await interaction.reply({ embeds: [exampleEmbed] });
   },
 };

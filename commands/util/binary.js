@@ -59,7 +59,7 @@ module.exports = {
 
     } else if (subcommand === "bin_to_dec") {
         const binary = interaction.options.getInteger("binary");
-        const integer = parseInt(`**${binary}**`, 2);
+        const integer = parseInt(binary, 2);
         const embed = new EmbedBuilder()
             .addFields(
                 {name: 'Binary', value: `**${binary}**`, inline: true},

@@ -14,13 +14,13 @@ module.exports = {
     try {
       const result = evaluate(expression);
       const embed = new EmbedBuilder().addFields(
-        { name: "Expression", value: `${expression}` },
+        { name: "Expression", value: `\`${expression}\`` },
         { name: "Result", value: `${result}` },
       );
       await interaction.reply({ embeds: [embed] });
     } catch (error) {
       const embed = new EmbedBuilder().setTitle(
-        `❌ Input \`${expression}\` not a valid expression.`,
+        `❌  Input: \`${expression}\` is not a valid expression.`,
       );
       await interaction.reply({ embeds: [embed] });
     }

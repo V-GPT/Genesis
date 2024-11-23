@@ -81,7 +81,7 @@ module.exports = {
   async execute(interaction) {
     const subcommand = interaction.options.getSubcommand();
 
-    if (subcommand === "dec_to_bin") {
+    if (subcommand === "encode") {
       const integer = interaction.options.getInteger("number");
       const binary = integer.toString(2);
       const embed = new EmbedBuilder()
@@ -92,7 +92,7 @@ module.exports = {
 
       await interaction.reply({ embeds: [embed] });
 
-    } else if (subcommand === "bin_to_dec") {
+    } else if (subcommand === "decode") {
         const binary = interaction.options.getInteger("binary");
         const integer = parseInt(binary, 2);
         const embed = new EmbedBuilder()

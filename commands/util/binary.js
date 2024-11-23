@@ -101,8 +101,8 @@ module.exports = {
       } else if (subcommand === "decode") {
         try {
           const binary = interaction.options.getInteger("binary");
-          const check = !/^[01]+$/;
-          if (check.test(binary.toString())) {
+          const check = /^[01]+$/;
+          if (!check.test(binary.toString())) {
             throw new Error("Input must be a valid binary number.");
           }
           const integer = parseInt(binary, 2);
@@ -122,8 +122,8 @@ module.exports = {
         try {
           const first = interaction.options.getInteger("first");
           const second = interaction.options.getInteger("second");
-          const check = !/^[01]+$/;
-          if (check.test(first.toString()) || check.test(second.toString())) {
+          const check = /^[01]+$/;
+          if (!check.test(first.toString()) || check.test(second.toString())) {
             throw new Error("Both inputs must be valid binary numbers.");
           }
           const sum = parseInt(first, 2) + parseInt(second, 2);
@@ -144,8 +144,8 @@ module.exports = {
         try {
           const first = interaction.options.getInteger("first");
           const second = interaction.options.getInteger("second");
-          const check = !/^[01]+$/;
-          if (check.test(first.toString()) || check.test(second.toString())) {
+          const check = /^[01]+$/;
+          if (!check.test(first.toString()) || check.test(second.toString())) {
             throw new Error("Both inputs must be valid binary numbers.");
           }
           const difference = parseInt(first, 2) - parseInt(second, 2);
@@ -166,8 +166,8 @@ module.exports = {
         try {
           const first = interaction.options.getInteger("first");
           const second = interaction.options.getInteger("second");
-          const check = !/^[01]+$/;
-          if (check.test(first.toString()) || check.test(second.toString())) {
+          const check = /^[01]+$/;
+          if (!check.test(first.toString()) || check.test(second.toString())) {
             throw new Error("Both inputs must be valid binary numbers.");
           }
           const product = parseInt(first, 2) * parseInt(second, 2);

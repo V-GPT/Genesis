@@ -29,7 +29,7 @@ module.exports = {
     .addSubcommand(subcommand =>
       subcommand
         .setName("add")
-        .setDescription("Add two numbers")
+        .setDescription("Add two binary numbers")
         .addIntegerOption(option =>
           option
             .setName("first")
@@ -72,7 +72,7 @@ module.exports = {
         
         const first = interaction.options.getInteger("first");
         const second = interaction.options.getInteger("second");
-        const sum = first + second;
+        const sum = parseInt(first, 2) + parseInt(second, 2);
         const binarySum = sum.toString(2);
   
         const embed = new EmbedBuilder()

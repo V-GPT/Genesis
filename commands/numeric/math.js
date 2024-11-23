@@ -20,7 +20,7 @@ module.exports = {
       await interaction.reply({ embeds: [embed] });
     } catch (error) {
       const embed = new EmbedBuilder().setTitle(
-        `❌  Input: \`${expression}\` is not a valid expression.`,
+        `❌\tInput: \`${expression}\` is not a valid expression.`,
       );
       await interaction.reply({ embeds: [embed] });
     }

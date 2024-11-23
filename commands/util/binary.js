@@ -6,7 +6,7 @@ module.exports = {
     .setDescription("Binary and Decimal Conversions")
     .addSubcommand(subcommand =>
       subcommand
-        .setName("dec_to_bin")
+        .setName("encode")
         .setDescription("Convert a number to binary")
         .addIntegerOption(option =>
           option
@@ -17,7 +17,7 @@ module.exports = {
     )
     .addSubcommand(subcommand =>
         subcommand
-          .setName("bin_to_dec")
+          .setName("decode")
           .setDescription("Convert a binary number to a decimal number")
           .addIntegerOption(option =>
             option
@@ -42,7 +42,42 @@ module.exports = {
             .setDescription("The second number")
             .setRequired(true)
         )
+    )
+    .addSubcommand(subcommand =>
+        subcommand
+          .setName("subtract")
+          .setDescription("Subtract two binary numbers")
+          .addIntegerOption(option =>
+            option
+              .setName("first")
+              .setDescription("The first number")
+              .setRequired(true)
+          )
+          .addIntegerOption(option =>
+            option
+              .setName("second")
+              .setDescription("The second number")
+              .setRequired(true)
+        )
+    )
+    .addSubcommand(subcommand =>
+        subcommand
+          .setName("multiply")
+          .setDescription("Multiply two binary numbers")
+          .addIntegerOption(option =>
+            option
+              .setName("first")
+              .setDescription("The first number")
+              .setRequired(true)
+          )
+          .addIntegerOption(option =>
+            option
+              .setName("second")
+              .setDescription("The second number")
+              .setRequired(true)
+        )
     ),
+
   async execute(interaction) {
     const subcommand = interaction.options.getSubcommand();
 
@@ -77,12 +112,41 @@ module.exports = {
   
         const embed = new EmbedBuilder()
             .addFields(
-                {name: 'First', value: `**${first}**`, inline: true},
-                {name: 'Second', value: `**${second}**`, inline: true},
+                {name: 'First + Second', value: `First: **${first}**, Second: **${second}**`, inline: true},
                 {name: 'Sum', value: `**${binarySum}**`, inline: true},
             )
   
         await interaction.reply({ embeds: [embed] });
-    }
+    
+    } else if (subcommand === "subtract") {
+        
+        const first = interaction.options.getInteger("first");
+        const second = interaction.options.getInteger("second");
+        const difference = parseInt(first, 2) - parseInt(second, 2);
+        const binaryDifference = difference.toString(2);
+  
+        const embed = new EmbedBuilder()
+            .addFields(
+                {name: 'First - Second', value: `First: **${first}**, Second: **${second}**`, inline: true},
+                {name: 'Difference', value: `**${binaryDifference}**`, inline: true},
+            )
+  
+        await interaction.reply({ embeds: [embed] });
+    
+    } else if (subcommand === "multiply") {
+        
+        const first = interaction.options.getInteger("first");
+        const second = interaction.options.getInteger("second");
+        const product = parseInt(first, 2) * parseInt(second, 2);
+        const binaryProduct = product.toString(2);
+  
+        const embed = new EmbedBuilder()
+            .addFields(
+                {name: 'First * Second', value: `First: **${first}**, Second: **${second}**`, inline: true},
+                {name: 'Product', value: `**${binaryProduct}**`, inline: true},
+            )
+  
+        await interaction.reply({ embeds: [embed] });   
+    } 
   },
 };

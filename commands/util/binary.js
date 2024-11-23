@@ -3,16 +3,27 @@ const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("binary")
-    .setDescription("A command with binary conversion and addition functionality")
+    .setDescription("Binary and Decimal Conversions")
     .addSubcommand(subcommand =>
       subcommand
-        .setName("convert")
+        .setName("dec_to_bin")
         .setDescription("Convert a number to binary")
         .addIntegerOption(option =>
           option
             .setName("number")
             .setDescription("Pick a number to convert into binary")
             .setRequired(true)
+        )
+    )
+    .addSubcommand(subcommand =>
+        subcommand
+          .setName("bin_to_dec")
+          .setDescription("Convert a binary number to a decimal number")
+          .addIntegerOption(option =>
+            option
+              .setName("binary")
+              .setDescription("Pick a binary number to convert into decimals")
+              .setRequired(true)
         )
     )
     .addSubcommand(subcommand =>
@@ -35,36 +46,43 @@ module.exports = {
   async execute(interaction) {
     const subcommand = interaction.options.getSubcommand();
 
-    if (subcommand === "convert") {
-      const integer = interaction.options.getInteger("integer");
+    if (subcommand === "dec_to_bin") {
+      const integer = interaction.options.getInteger("number");
       const binary = integer.toString(2);
-
       const embed = new EmbedBuilder()
-        .setTitle("Binary Converter")
         .addFields(
             {name: 'Number', value: `**${integer}**`, inline: true},
             {name: 'Binary', value: `**${binary}**`, inline: true},
         )
-        .setColor("BLUE");
+
+      await interaction.reply({ embeds: [embed] });
+
+    } else if (subcommand === "bin_to_dec") {
+        const binary = interaction.options.getInteger("binary");
+        const integer = parseInt(`**${binary}**`, 2);
+        const embed = new EmbedBuilder()
+            .addFields(
+                {name: 'Binary', value: `**${binary}**`, inline: true},
+                {name: 'Number', value: `**${integer}**`, inline: true},
+            )
 
       await interaction.reply({ embeds: [embed] });
 
     } else if (subcommand === "add") {
-      const first = interaction.options.getInteger("first");
-      const second = interaction.options.getInteger("second");
-      const sum = first + second;
-      const binarySum = sum.toString(2);
-
-      const embed = new EmbedBuilder()
-        .setTitle("Addition Result")
-        .addFields(
-            {name: 'First', value: `**${first}**`, inline: true},
-            {name: 'Second', value: `**${second}**`, inline: true},
-            {name: 'Sum', value: `**${binarySum}**`, inline: true},
-        )
-        .setColor("GREEN");
-
-      await interaction.reply({ embeds: [embed] });
+        
+        const first = interaction.options.getInteger("first");
+        const second = interaction.options.getInteger("second");
+        const sum = first + second;
+        const binarySum = sum.toString(2);
+  
+        const embed = new EmbedBuilder()
+            .addFields(
+                {name: 'First', value: `**${first}**`, inline: true},
+                {name: 'Second', value: `**${second}**`, inline: true},
+                {name: 'Sum', value: `**${binarySum}**`, inline: true},
+            )
+  
+        await interaction.reply({ embeds: [embed] });
     }
   },
 };

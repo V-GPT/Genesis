@@ -131,7 +131,7 @@ module.exports = {
 
           const embed = new EmbedBuilder()
             .addFields(
-              { name: 'First + Second', value: `First: **${first}**, Second: **${second}**`, inline: true },
+              { name: 'First + Second', value: `First: **${first}** + Second: **${second}**`, inline: true },
               { name: 'Sum', value: `**${binarySum}**`, inline: true },
             );
 
@@ -153,7 +153,7 @@ module.exports = {
 
           const embed = new EmbedBuilder()
             .addFields(
-              { name: 'First - Second', value: `First: **${first}**, Second: **${second}**`, inline: true },
+              { name: 'First - Second', value: `First: **${first}** - Second: **${second}**`, inline: true },
               { name: 'Difference', value: `**${binaryDifference}**`, inline: true },
             );
 
@@ -175,7 +175,7 @@ module.exports = {
 
           const embed = new EmbedBuilder()
             .addFields(
-              { name: 'First * Second', value: `First: **${first}**, Second: **${second}**`, inline: true },
+              { name: 'First * Second', value: `First: **${first}** * Second: **${second}**`, inline: true },
               { name: 'Product', value: `**${binaryProduct}**`, inline: true },
             );
 

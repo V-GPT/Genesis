@@ -15,7 +15,7 @@ module.exports = {
       const result = evaluate(expression);
       const embed = new EmbedBuilder().addFields(
         { name: "Expression", value: `\`${expression}\`` },
-        { name: "Result", value: `${result}` },
+        { name: "Result", value: `\`${result}\`` },
       );
       await interaction.reply({ embeds: [embed] });
     } catch (error) {

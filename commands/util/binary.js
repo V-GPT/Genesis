@@ -107,8 +107,8 @@ module.exports = {
 
         const embed = new EmbedBuilder()
           .addFields(
-            { name: "Number", value: `**${integer}**`, inline: true },
-            { name: "Binary", value: `**${binary}**`, inline: true }
+            { name: "Expression", value: `${integer}`, inline: true },
+            { name: "Result", value: `${binary}`, inline: true }
           );
 
         await interaction.reply({ embeds: [embed] });
@@ -122,8 +122,8 @@ module.exports = {
 
         const embed = new EmbedBuilder()
           .addFields(
-            { name: "Binary", value: `**${binary}**`, inline: true },
-            { name: "Number", value: `**${integer}**`, inline: true }
+            { name: "Expression", value: `${binary}`, inline: true },
+            { name: "Result", value: `${integer}`, inline: true }
           );
 
         await interaction.reply({ embeds: [embed] });
@@ -141,8 +141,8 @@ module.exports = {
 
         const embed = new EmbedBuilder()
           .addFields(
-            { name: "First + Second", value: `First: **${first}** + Second: **${second}**`, inline: true },
-            { name: "Sum", value: `**${binarySum}**`, inline: true }
+            { name: "Expression", value: `${first} + ${second}`, inline: true },
+            { name: "Result", value: `${binarySum}`, inline: true }
           );
 
         await interaction.reply({ embeds: [embed] });
@@ -160,8 +160,8 @@ module.exports = {
 
         const embed = new EmbedBuilder()
           .addFields(
-            { name: "First - Second", value: `First: **${first}** - Second: **${second}**`, inline: true },
-            { name: "Difference", value: `**${binaryDifference}**`, inline: true }
+            { name: "Expression", value: `${first} - ${second}`, inline: true },
+            { name: "Result", value: `${binaryDifference}`, inline: true }
           );
 
         await interaction.reply({ embeds: [embed] });
@@ -179,8 +179,8 @@ module.exports = {
 
         const embed = new EmbedBuilder()
           .addFields(
-            { name: "First * Second", value: `First: **${first}** * Second: **${second}**`, inline: true },
-            { name: "Product", value: `**${binaryProduct}**`, inline: true }
+            { name: "Expression", value: `${first} * ${second}`, inline: true },
+            { name: "Result", value: `${binaryProduct}`, inline: true }
           );
 
         await interaction.reply({ embeds: [embed] });
@@ -202,8 +202,8 @@ module.exports = {
 
         const embed = new EmbedBuilder()
           .addFields(
-            { name: "First / Second", value: `First: **${first}** ÷ Second: **${second}**`, inline: true },
-            { name: "Quotient", value: `**${binaryQuotient}**`, inline: true }
+            { name: "Expression", value: `${first} ÷ ${second}`, inline: true },
+            { name: "Result", value: `${binaryQuotient}`, inline: true }
           );
 
         await interaction.reply({ embeds: [embed] });

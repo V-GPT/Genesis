@@ -6,7 +6,10 @@ module.exports = {
     .setName("math")
     .setDescription("Evaluates mathematical expressions")
     .addStringOption((option) =>
-      option.setName("expression").setDescription("Expression to be evaluated"),
+      option
+        .setName("expression")
+        .setDescription("Expression to be evaluated")
+        .setRequired(true),
     ),
   async execute(interaction) {
     const expression = interaction.options.getString("expression");

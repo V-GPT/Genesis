@@ -24,7 +24,7 @@ module.exports = {
       );
       await interaction.reply({ embeds: [embed] });
     } else {
-      const embed = createErrorEmbed("Minimum should be greater than maximum.");
+      const embed = createErrorEmbed("Minimum should be less than maximum.");
       await interaction.reply({ embeds: [embed], ephemeral: true });
     }
   },

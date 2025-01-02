@@ -1,5 +1,6 @@
 const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
 const { evaluate } = require("mathjs");
+const { createErrorEmbed } = require("../../util/Embeds");
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -22,10 +23,10 @@ module.exports = {
       );
       await interaction.reply({ embeds: [embed] });
     } catch (error) {
-      const embed = new EmbedBuilder().setTitle(
-        `❌\tInput: \`${expression}\` is not a valid expression.`,
+      const errorEmbed = createErrorEmbed(
+        `Input: \`${expression}\` is not a valid expression.`,
       );
-      await interaction.reply({ embeds: [embed] });
+      await interaction.reply({ embeds: [errorEmbed] });
     }
   },
 };

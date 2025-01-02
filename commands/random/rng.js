@@ -1,4 +1,5 @@
 const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
+const { createErrorEmbed } = require("../../util/Embeds");
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -23,7 +24,7 @@ module.exports = {
       );
       await interaction.reply({ embeds: [embed] });
     } else {
-      const embed = new EmbedBuilder().setTitle(`❌\tInvalid input: min > max`);
+      const embed = createErrorEmbed("Minimum should be greater than maximum.");
       await interaction.reply({ embeds: [embed], ephemeral: true });
     }
   },

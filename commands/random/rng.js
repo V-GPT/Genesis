@@ -16,12 +16,15 @@ module.exports = {
     const min = interaction.options.getInteger("min");
     const max = interaction.options.getInteger("max");
 
-    const embed =
-      min <= max
-        ? new EmbedBuilder().setTitle(
-            `Your random number from ${min} to ${max} is ${Math.round(Math.random() * (max - min)) + min}!`,
-          )
-        : new EmbedBuilder().setTitle(`❌\tInvalid input: min > max`);
+    if (min > max) {
+      const embed = new EmbedBuilder().setTitle(`❌\tInvalid input: min > max`);
+      return await interaction.reply({ embeds: [embed], ephemeral: true });
+    }
+
+    const embed = new EmbedBuilder().setTitle(
+      `Your random number from ${min} to ${max} is ${Math.round(Math.random() * (max - min)) + min}!`,
+    );
+
     await interaction.reply({ embeds: [embed] });
   },
 };
